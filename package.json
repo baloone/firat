@@ -2,14 +2,13 @@
   "name": "firat",
   "version": "0.0.1",
   "description": "A document editor that allows you to easily edit mathematical formulas and get beautiful documents.",
-  "main": "*",
+  "main": "src/electron/main.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint **/*.js",
-    "lint:fix": "./node_modules/.bin/eslint **/*.js --fix",
-    "release":"",
-    "debug":"",
-    "build:release":"",
-    "build:debug":""
+    "lint": "./node_modules/.bin/eslint --ext .js,.vue src",
+    "lint:fix": "./node_modules/.bin/eslint --ext .js,.vue src --fix",
+    "webpack": "./node_modules/.bin/webpack",
+    "webpack:watch": "./node_modules/.bin/webpack --watch",
+    "electron": "./node_modules/.bin/electron ."
   },
   "author": "Mohamed Hadjoudj",
   "license": "MIT",
@@ -20,6 +19,8 @@
   },
   "devDependencies": {
     "eslint": "^3.19.0",
+    "vue-loader": "^11.3.4",
+    "vue-template-compiler": "^2.2.6",
     "webpack": "^2.3.3"
   }
 }
