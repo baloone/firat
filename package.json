@@ -18,7 +18,10 @@
     "vue": "^2.2.6"
   },
   "devDependencies": {
+    "css-loader": "^0.28.0",
     "eslint": "^3.19.0",
+    "node-sass": "^4.5.2",
+    "sass-loader": "0.0.1",
     "vue-loader": "^11.3.4",
     "vue-template-compiler": "^2.2.6",
     "webpack": "^2.3.3"

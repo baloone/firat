@@ -12,6 +12,11 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: "vue-loader",
+                query: {
+                    loaders: {
+                        scss: "css-loader!sass-loader",
+                    },
+                },
             },
         ],
     },
