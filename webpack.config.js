@@ -10,11 +10,16 @@ module.exports = {
     module: {
         loaders: [
             {
+                test: /\.s[a|c]ss$/,
+                loader: "style-loader!css-loader!sass-loader",
+            },
+            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader"},
+            {
                 test: /\.vue$/,
                 loader: "vue-loader",
                 query: {
                     loaders: {
-                        scss: "css-loader!sass-loader",
+                        scss: "style-loader!css-loader!sass-loader",
                     },
                 },
             },

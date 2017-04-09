@@ -11,6 +11,13 @@ let mainWindow
 app.on ("ready", () => {
     BrowserWindow.addDevToolsExtension (path.join (__dirname, "exts", "vue"))
 
-    mainWindow = new BrowserWindow ({width: 800, height: 600, backgroundColor: "#f1f1f1"})
+    mainWindow = new BrowserWindow ({
+        center: true,
+        frame: false,
+        minWidth: 300,
+        minHeight:  530,
+    })
+    mainWindow.toggleDevTools ()
+    mainWindow.setMenu (null)
     mainWindow.loadURL (`file://${__dirname}/../dist/index.html`)
 })
