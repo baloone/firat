@@ -9807,10 +9807,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         editor: __webpack_require__ (19)
     },
-    data () {
-        return {
-            msg: "",
-        }
+    methods : {
+        minimize (e) {
+            let win = remote.getCurrentWindow ()
+            if (!win.isMinimized ()) {
+                win.minimize ()
+            }
+        },
+        maximizeOrRestore (e) {
+            let win = remote.getCurrentWindow ()
+            if (win.isMaximized ()) {
+                win.restore ()
+                e.target.classList.add ("maximize")
+                e.target.classList.remove ("restore")
+            } else {
+                win.maximize ()
+                e.target.classList.remove ("maximize")
+                e.target.classList.add ("restore")
+            }
+        },
+        close (e) {
+            remote.getCurrentWindow ().close ( )
+        },
     },
 });
 
@@ -9845,8 +9863,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     attrs: {
       "id": "titlebar"
@@ -9862,13 +9878,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "display": "flex"
     }
   }, [_c('div', {
-    staticClass: "window-control-btn minimize"
+    staticClass: "window-control-btn minimize",
+    on: {
+      "click": _vm.minimize
+    }
   }), _vm._v(" "), _c('div', {
-    staticClass: "window-control-btn maximize"
+    staticClass: "window-control-btn maximize",
+    on: {
+      "click": _vm.maximizeOrRestore
+    }
   }), _vm._v(" "), _c('div', {
-    staticClass: "window-control-btn close"
+    staticClass: "window-control-btn close",
+    on: {
+      "click": _vm.close
+    }
   })])])
-}]}
+},staticRenderFns: []}
 
 /***/ }),
 /* 24 */

@@ -2,9 +2,9 @@
     <div id="titlebar">
         <div style="width: 100%; display: flex" class="draggable"></div>
         <div style="display: flex">
-            <div class="window-control-btn minimize"></div>
-            <div class="window-control-btn maximize"></div>
-            <div class="window-control-btn close"></div>
+            <div class="window-control-btn minimize" v-on:click="minimize"></div>
+            <div class="window-control-btn maximize" v-on:click="maximizeOrRestore"></div>
+            <div class="window-control-btn close" v-on:click="close"></div>
         </div>
     </div>
 </template>
@@ -16,10 +16,28 @@ export default {
     components: {
         editor: require ("./editor.vue")
     },
-    data () {
-        return {
-            msg: "",
-        }
+    methods : {
+        minimize (e) {
+            let win = remote.getCurrentWindow ()
+            if (!win.isMinimized ()) {
+                win.minimize ()
+            }
+        },
+        maximizeOrRestore (e) {
+            let win = remote.getCurrentWindow ()
+            if (win.isMaximized ()) {
+                win.restore ()
+                e.target.classList.add ("maximize")
+                e.target.classList.remove ("restore")
+            } else {
+                win.maximize ()
+                e.target.classList.remove ("maximize")
+                e.target.classList.add ("restore")
+            }
+        },
+        close (e) {
+            remote.getCurrentWindow ().close ( )
+        },
     },
 }
 </script>
