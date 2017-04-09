@@ -1,5 +1,8 @@
 <template>
     <div id="titlebar">
+        <div style="display: flex">
+            <div class="window-control-btn settings" v-on:click="toggleSettings"></div>
+        </div>
         <div style="width: 100%; display: flex" class="draggable"></div>
         <div style="display: flex">
             <div class="window-control-btn minimize" v-on:click="minimize"></div>
@@ -7,6 +10,8 @@
             <div class="window-control-btn close" v-on:click="close"></div>
         </div>
     </div>
+    <editor hidden="{{settings.hidden ? '' : 'hidden'}}"></editor>
+    <settings hidden="{{settings.hidden ? 'hidden' : ''}}" id="settings"></settings>
 </template>
 
 <script>
@@ -14,8 +19,14 @@
 export default {
     name: "app",
     components: {
-        editor: require ("./editor.vue")
+        editor: require ("./settings.vue"),
+        editor: require ("./editor.vue"),
     },
+    data: _ => { return {
+        settings: {
+            hidden: true,
+        },
+    }},
     methods : {
         minimize (e) {
             let win = remote.getCurrentWindow ()
@@ -38,6 +49,16 @@ export default {
         close (e) {
             remote.getCurrentWindow ().close ( )
         },
+        toggleSettings (e) {
+            this.settings.hidden = !this.settings.hidden
+            if (this.settings.hidden) {
+                e.target.classList.add ("settings")
+                e.target.classList.remove ("arrow")
+            } else {
+                e.target.classList.remove ("settings")
+                e.target.classList.add ("arrow")
+            }
+        },
     },
 }
 </script>
@@ -58,7 +79,7 @@ $text-color: #252525;
 body {
     margin: 0;
     padding: 0;
-    border: 1px white solid;
+    border: 1px $primary-color solid;
 }
 .draggable {
     -webkit-app-region: drag;
@@ -86,10 +107,16 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 15px;
-    transition: filter .1s;
+    transition: filter .1s, background-image .3s;
 }
 .window-control-btn.maximize::after {
     background-image: url("../../res/maximize.svg");
+}
+.window-control-btn.settings::after {
+    background-image: url("../../res/settings.svg");
+}
+.window-control-btn.arrow::after {
+    background-image: url("../../res/arrow.svg");
 }
 .window-control-btn.restore::after {
     background-image: url("../../res/restore.svg");
