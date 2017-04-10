@@ -1,17 +1,17 @@
 <template lang="html">
     <div style="display: inline-block">
         <span @click="value = !value" v-if="type=='checkbox'">
-            {{type}} {{value}}
+            {{label}} {{value}}
         </span>
         <span v-if="type=='file'">
             <input type="file" :name="label" :value="value">
         </span>
-        <span v-if="type=='text'" contentEditable="true">
-            sdaasd
+        <span v-if="type=='text'" id="text">
+            <input type="text" :name="label" :value="value">
         </span>
-        <div v-if="type=='longtext'" contentEditable="true">
-            asdasd
-        </div>
+        <span v-if="type=='longtext'" contentEditable="true" id="longtext">
+            <textarea :name="label">{{value}}</textarea>
+        </span>
     </div>
 </template>
 

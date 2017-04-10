@@ -21,18 +21,6 @@ export default {
                     type: "checkbox",
                     value: true,
                 },
-                {
-                    description: "Current file",
-                    type: "file",
-                },
-                {
-                    description: "Current file",
-                    type: "text",
-                },
-                {
-                    description: "Current file",
-                    type: "longtext",
-                },
             ]
         }
     },
