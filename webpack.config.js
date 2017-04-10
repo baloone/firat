@@ -5,8 +5,9 @@ module.exports = {
     entry: path.join (__dirname, "src", "scripts", "main.js"),
     output: {
         path: path.join (__dirname, "src", "dist"),
-        filename: "main.js",
+        filename: "build.js",
     },
+    target: "electron",
     module: {
         loaders: [
             {

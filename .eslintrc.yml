@@ -4,6 +4,9 @@ env:
 plugins: [vue]
 parserOptions:
   sourceType: module
+globals:
+  document: true
+  window: true
 rules:
   indent: warn
   quotes: [warn, double]

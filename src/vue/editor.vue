@@ -1,11 +1,13 @@
 <template lang="html">
-<span>
-    Hello
-</span>
+<div class="editor" style="background-color:'brown'">
+Editor
+</div>
 </template>
 
 <script>
 export default {
+    props: {
+    },
 }
 </script>
 

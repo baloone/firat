@@ -9,15 +9,20 @@ require ("electron-reload") (srcDir, {
 let mainWindow
 
 app.on ("ready", () => {
-    BrowserWindow.addDevToolsExtension (path.join (__dirname, "exts", "vue"))
-
+    if (!BrowserWindow.getDevToolsExtensions ().hasOwnProperty ("Vue.js devtools"))
+        BrowserWindow.addDevToolsExtension (path.join (__dirname, "exts", "vue"))
     mainWindow = new BrowserWindow ({
         center: true,
         frame: false,
         minWidth: 300,
         minHeight:  530,
+        icon:  path.join (path.dirname (srcDir), "res", "logo.png"),
     })
     mainWindow.toggleDevTools ()
     mainWindow.setMenu (null)
-    mainWindow.loadURL (`file://${__dirname}/../dist/index.html`)
+    mainWindow.loadURL (`file://${srcDir}/dist/index.html`)
+})
+
+app.on ("window-all-closed", () => {
+    app.quit ()
 })
