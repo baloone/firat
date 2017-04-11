@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="container">
     <div id="titlebar">
         <div style="display: flex; border-right: rgba(187, 187, 187, 0.5) 1px solid;">
             <div class="window-control-btn settings contextmenu" @click="toggleSettings"></div>
@@ -18,7 +18,7 @@
     <div id="subtitlebar" class="hidden">
 
     </div>
-    <div style="display: flex; height: 100%; width: 100%; position:relative">
+    <div style="display: flex; flex: 1; flex-direction: column; position: relative;">
         <transition name="slide" mode="out-in">
             <editor v-if="paramaters.hidden"></editor>
             <settings v-else></settings>
@@ -115,12 +115,18 @@ html.hover {
     filter: none !important;
     opacity: 1 !important;
 }
+html, body, #container {
+    height: 100%;
+}
 body {
     margin: 0;
     padding: 0;
     border: 1px $primary-color solid;
-    height: calc(100vh + -2px);
     overflow: hidden;
+}
+#container {
+    display: flex;
+    flex-direction: column;
 }
 .draggable {
     -webkit-app-region: drag;

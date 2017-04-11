@@ -1,6 +1,5 @@
 <template lang="html">
-<div class="editor" style="background-color:'brown'">
-Editor
+<div class="editor" contenteditable>
 </div>
 </template>
 
@@ -12,4 +11,8 @@ export default {
 </script>
 
 <style lang="css">
+.editor {
+  flex: 1;
+  padding: 2em;
+}
 </style>

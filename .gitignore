@@ -2,3 +2,6 @@ node_modules*
 src/dist/*.js
 src/dist/*.svg
 npm-debug.lo*
+
+# Mac
+.DS_Store
