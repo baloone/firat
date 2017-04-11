@@ -14,5 +14,7 @@ export default {
 .editor {
   flex: 1;
   padding: 2em;
+  font: message-box;
+  font-size: 1.1em;
 }
 </style>
